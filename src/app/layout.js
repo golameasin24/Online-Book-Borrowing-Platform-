@@ -1,13 +1,24 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Montserrat, Playfair_Display, Poppins } from "next/font/google"; // Playfair পরিবর্তন করে Playfair_Display করা হয়েছে
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Poppins ফন্ট কনফিগারেশন
+const inter = Inter({
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+export const montserrat = Montserrat({
+  weight: ["100", "200", "300", "400", "500", "700"], // 700 যোগ করা হলো বোল্ড টেক্সটের জন্য
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+});
+
+// Playfair_Display ফন্ট কনফিগারেশন (সঠিক ওয়েট সহ)
+export const playfair = Playfair_Display({
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
@@ -20,9 +31,13 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${montserrat.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className={`${inter.className} min-h-full flex flex-col`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

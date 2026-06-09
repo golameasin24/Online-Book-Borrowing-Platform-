@@ -1,5 +1,3 @@
-"use client";
-import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -7,23 +5,24 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import NavLink from "./NavLink/NavLink";
 
 export const NavMenu = (props) => (
   <NavigationMenu {...props}>
-    <NavigationMenuList className="data-[orientation=vertical]:-ms-2 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start">
+    <NavigationMenuList className="data-[orientation=vertical]:-ms-2 data-[orientation=vertical]:flex-col gap-4 data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start">
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/">Home</Link>
+          <NavLink href="/">Home</NavLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="#">All Books</Link>
+          <NavLink href="/all-book">All Books</NavLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/signin">My Porfile</Link>
+          <NavLink href="/signin">My Porfile</NavLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>

@@ -32,8 +32,12 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${inter.variable} ${montserrat.variable} ${playfair.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className={`${inter.className} min-h-full flex flex-col`}>
+      <body
+        suppressHydrationWarning
+        className={`${inter.className} min-h-full flex flex-col`}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>

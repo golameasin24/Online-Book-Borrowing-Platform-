@@ -6,6 +6,7 @@ import { GoBook } from "react-icons/go";
 import { montserrat, playfair } from "@/app/layout";
 import Link from "next/link";
 import { ThemeToggle } from "./thme-toogle-button/theme-toggole-button";
+import UserMenu from "./UserMenu/UserMenu";
 
 const Navbar = () => {
   return (
@@ -17,19 +18,19 @@ const Navbar = () => {
           <button className="bg-[#005c45] p-3 rounded-3xl">
             <GoBook className="text-white font-bold text-xl" />
           </button>
-          <h2 className={`${playfair.className}`}>Mahfuj Store</h2>
+          <Link href={"/"} className={`${playfair.className}`}>
+            Mahfuj Store
+          </Link>
         </div>
         {/* Desktop Menu */}
         <NavMenu className="hidden md:block" />
 
         <div className="flex items-center gap-3">
           <Button
-            className="hidden sm:inline-flex bg-[#005c45] rounded-2xl px-5"
+            className="hidden sm:inline-flex border-none px-5"
             variant="outline"
           >
-            <Link className="text-white" href={"/signin"}>
-              Login
-            </Link>
+            <UserMenu />
           </Button>
           <ThemeToggle />
 

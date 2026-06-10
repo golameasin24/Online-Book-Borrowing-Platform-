@@ -39,15 +39,15 @@ export default function Hero() {
               className="group rounded-full px-6 shadow-md transition-all hover:shadow-lg hover:shadow-primary/10  bg-green-800 text-white dark:bg-white hover:bg-green-500 dark:text-slate-700 hover:text-white"
               size="lg"
             >
-              Browse Now
+              <Link href={`/all-book/${"00"}`}> Browse Now</Link>
               <ArrowUpRight className="ml-1 size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Button>
             <Button
-              className=" hover:bg-orange-400  border-0 dark:text-white hover:text-white rounded-2xl"
+              className=" bg-green-800 hover:bg-orange-400  border-0 dark:text-white hover:text-white rounded-2xl"
               size="lg"
               variant="outline"
             >
-              Become a member <IoMdLogIn />
+              <Link href={`/signup`}> Become a member</Link> <IoMdLogIn />
             </Button>
           </div>
         </div>

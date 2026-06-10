@@ -10,8 +10,9 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Logo } from "@/components/logo";
 import { authClient } from "@/lib/auth-client";
+// এখানে 'toast' ইমপোর্ট যোগ করা হয়েছে
+import { toast, Bounce } from "react-toastify";
 
-// Zod স্কিমাতে username ফিল্ড যোগ করা হয়েছে
 const formSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters long"),
   email: z.string().email("Invalid email address"),
@@ -19,7 +20,6 @@ const formSchema = z.object({
 });
 
 const SignUp = () => {
-  // TypeScript এর জেনেরিক টাইপ (<z.infer...>) সরিয়ে ফেলা হয়েছে
   const form = useForm({
     defaultValues: {
       username: "",
@@ -31,23 +31,49 @@ const SignUp = () => {
 
   const onSubmit = async (new_user) => {
     const { data, error } = await authClient.signUp.email({
-      name: new_user.username, // 👈 'new_user.name' এর জায়গায় 'new_user.username' হবে
+      name: new_user.username,
       email: new_user.email,
       password: new_user.password,
-      // image: "https://example.com/image.png",
       callbackURL: "/",
     });
 
-    // এরর হ্যান্ডেলিং এবং সাকসেস চেক করার জন্য এই অংশটুকু যোগ করতে পারেন:
     if (error) {
-      console.error("Signup failed:", error.message);
-      // এখানে চাইলে কোনো টোস্ট (Toast) বা নোটিফিকেশন দেখাতে পারেন
+      toast.error(error.message || "Something went wrong. Please try again!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+        transition: Bounce,
+      });
     } else {
-      console.log("Signup successful:", data);
-      // eslint-disable-next-line react-hooks/immutability
-      window.location.href = "/";
+      toast.success("Account created successfully! Redirecting...", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+        transition: Bounce,
+      });
+
+      // টোস্ট দেখার জন্য সামান্য একটু সময় নিয়ে রিডাইরেক্ট করবে
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     }
   };
+
+  const notifyGoogle = () =>
+    toast.info("Google Sign-In coming soon!", {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "light",
+      transition: Bounce,
+    });
 
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -86,7 +112,7 @@ repeating-linear-gradient(
               transparent 3px,
               transparent 8px
             ),
-            repeating-linear-gradient(
+        repeating-linear-gradient(
               to bottom,
               black 0px,
               black 3px,
@@ -106,7 +132,7 @@ repeating-linear-gradient(
             Sign up for Shadcn UI Blocks
           </p>
 
-          <Button className="mt-8 w-full gap-3">
+          <Button onClick={notifyGoogle} className="mt-8 w-full gap-3">
             <GoogleLogo />
             Continue with Google
           </Button>
@@ -121,7 +147,6 @@ repeating-linear-gradient(
             className="w-full space-y-4"
             onSubmit={form.handleSubmit(onSubmit)}
           >
-            {/* নতুন Username ফিল্ড */}
             <Controller
               control={form.control}
               name="username"
@@ -179,7 +204,7 @@ repeating-linear-gradient(
             <Button
               className="mt-4 w-full"
               type="submit"
-              disabled={form.formState.isSubmitting} // 👈 এটি যোগ করতে পারেন
+              disabled={form.formState.isSubmitting}
             >
               {form.formState.isSubmitting
                 ? "Registering..."
@@ -189,7 +214,10 @@ repeating-linear-gradient(
 
           <p className="mt-5 text-center text-sm">
             Already have an account?
-            <Link className="ml-1 text-muted-foreground underline" href="#">
+            <Link
+              className="ml-1 text-muted-foreground underline"
+              href="/signin"
+            >
               Log in
             </Link>
           </p>

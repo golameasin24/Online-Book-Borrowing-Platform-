@@ -17,7 +17,7 @@ export const NavMenu = (props) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <NavLink href="/all-book">All Books</NavLink>
+          <NavLink href={`/all-book/${"00"}`}>All Books</NavLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
       <NavigationMenuItem>

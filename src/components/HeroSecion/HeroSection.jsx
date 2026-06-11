@@ -10,7 +10,7 @@ import { format } from "date-fns";
 
 export default function Hero() {
   return (
-    <div className="relative flex items-center justify-center overflow-hidden bg-background py-30">
+    <div className="relative flex items-center justify-center overflow-hidden bg-background lg:py-30">
       {/* Subtle Background Glows for Depth */}
       <div className="absolute top-0 left-1/4 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-[128px]" />
       <div className="absolute right-1/4 bottom-0 -z-10 h-96 w-96 rounded-full bg-primary/10 blur-[128px]" />

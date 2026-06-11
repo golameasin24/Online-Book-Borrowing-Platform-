@@ -11,6 +11,7 @@ import {
   CheckCircle,
   XCircle,
 } from "lucide-react";
+import BrowNow from "@/components/shared/BrowNow";
 
 const DetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -126,11 +127,11 @@ const DetailsPage = async ({ params }) => {
           {/* Action Buttons */}
           <div className="pt-4 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             <Button
-              className="flex-1 sm:flex-none px-8 h-11 font-medium shadow-sm transition-all"
+              className="flex-1 sm:flex-none px-8 h-11 font-medium  transition-all"
               disabled={!isAvailable}
             >
               <ShoppingBag className="mr-2 size-4" />
-              {isAvailable ? "Borrow This Book" : "Unavailable"}
+              {isAvailable ? <BrowNow /> : "Unavailable"}
             </Button>
 
             <Button

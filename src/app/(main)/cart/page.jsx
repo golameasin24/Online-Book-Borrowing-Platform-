@@ -10,7 +10,6 @@ import { BookContext } from "@/app/Context/CreateContext";
 const CartPage = () => {
   const { browBooks, setBrowBooks } = useContext(BookContext);
 
-  // কোয়ান্টিটি বাড়ানোর ফাংশন
   const handleIncreaseQuantity = (id) => {
     const updatedBooks = browBooks.map((book) => {
       if (book.id === id) {
@@ -19,9 +18,7 @@ const CartPage = () => {
         if (currentQty < book.available_quantity) {
           return { ...book, quantity: currentQty + 1 };
         } else {
-          alert(
-            `দুঃখিত, এই বইটির সর্বোচ্চ ${book.available_quantity} টি কপি উপলব্ধ আছে।`,
-          );
+          alert(`Sorry, The copy books ${book.available_quantity} is avalable`);
         }
       }
       return book;
@@ -29,7 +26,6 @@ const CartPage = () => {
     setBrowBooks(updatedBooks);
   };
 
-  // কোয়ান্টিটি কমানোর ফাংশন
   const handleDecreaseQuantity = (id) => {
     const updatedBooks = browBooks.map((book) => {
       if (book.id === id) {
@@ -44,26 +40,21 @@ const CartPage = () => {
     setBrowBooks(updatedBooks);
   };
 
-  // কার্ট থেকে আইটেম ডিলিট করার হ্যান্ডলার
   const handleDelete = (id) => {
     const updatedBooks = browBooks.filter((book) => book.id !== id);
     setBrowBooks(updatedBooks);
   };
 
-  // 🛠️ এখানে প্রতিটি বইয়ের কোয়ান্টিটি যোগ করে সর্বমোট বইয়ের সংখ্যা বের করা হচ্ছে
   const totalBooksCount = browBooks?.reduce((total, book) => {
     return total + (book.quantity || 1);
   }, 0);
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-extrabold text-gray-800 mb-6">
-        আপনার কার্ট
-      </h2>
+      <h2 className="text-3xl font-extrabold text-gray-800 mb-6">Your Cart</h2>
 
       {browBooks && browBooks.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* কার্ট আইটেম লিস্ট */}
           <div className="lg:col-span-2 space-y-4">
             {browBooks.map((book) => {
               const currentQuantity = book.quantity || 1;
@@ -91,9 +82,7 @@ const CartPage = () => {
                     </div>
                   </div>
 
-                  {/* কোয়ান্টিটি এবং ডিলিট বাটন */}
                   <div className="flex justify-between sm:justify-end items-center gap-6 w-full sm:w-auto border-t sm:border-t-0 pt-3 sm:pt-0">
-                    {/* প্লাস-মাইনাস বাটন সেকশন */}
                     <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
                       <button
                         onClick={() => handleDecreaseQuantity(book.id)}
@@ -125,14 +114,13 @@ const CartPage = () => {
             })}
           </div>
 
-          {/* চেকআউট সামারি সেকশন */}
           <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 h-fit space-y-4">
             <h3 className="text-xl font-bold text-gray-800 border-b pb-3">
               Browing summary
             </h3>
             <div className="flex justify-between text-gray-600">
               <span>Total book Item:</span>
-              {/* 🛠️ এখানে browBooks.length এর বদলে totalBooksCount ব্যবহার করা হয়েছে */}
+
               <span className="font-semibold text-gray-800">
                 {totalBooksCount} pice
               </span>

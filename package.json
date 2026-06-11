@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@better-auth/mongo-adapter": "^1.6.15",
+    "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^5.4.0",
     "@radix-ui/react-visually-hidden": "^1.2.5",
     "better-auth": "^1.6.15",

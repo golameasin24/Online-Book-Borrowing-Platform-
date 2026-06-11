@@ -32,6 +32,7 @@ const Navbar = () => {
           >
             <UserMenu />
           </Button>
+          <button>Cart</button>
           <ThemeToggle />
 
           {/* Mobile Menu */}

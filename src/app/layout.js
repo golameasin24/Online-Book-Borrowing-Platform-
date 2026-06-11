@@ -4,6 +4,9 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import ToastProvider from "@/components/ToastorProvider/ToasterProvider";
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
+import AppsProvider from "@/components/AppsProvider/AppsProvider";
 
 const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
@@ -48,20 +51,24 @@ export default function RootLayout({ children }) {
       >
         {/* এখানে মডিফাই করা হয়েছে */}
 
-        <ThemeProvider
-          attribute={["class", "data-theme"]}
-          defaultTheme="system"
-          enableSystem
-          value={{
-            light: "light",
+        <AppsProvider>
+          <ThemeProvider
+            attribute={["class", "data-theme"]}
+            defaultTheme="system"
+            enableSystem
+            value={{
+              light: "light",
 
-            dark: "dark",
-          }}
-        >
-          <ToastProvider>
-            <main>{children}</main>
-          </ToastProvider>
-        </ThemeProvider>
+              dark: "dark",
+            }}
+          >
+            <ToastProvider>
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+            </ToastProvider>
+          </ThemeProvider>
+        </AppsProvider>
       </body>
     </html>
   );

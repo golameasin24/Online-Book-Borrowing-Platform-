@@ -25,6 +25,12 @@ export const NavMenu = (props) => (
           <NavLink href="/signin">My Porfile</NavLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
+
+      <NavigationMenuItem>
+        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <NavLink href="/contact">Contact</NavLink>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
     </NavigationMenuList>
   </NavigationMenu>
 );

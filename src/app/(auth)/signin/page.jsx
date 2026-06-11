@@ -21,6 +21,14 @@ const formSchema = z.object({
 });
 
 const Login = () => {
+  const handleGoogleSignin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+
+    console.log(data);
+  };
+
   const form = useForm({
     defaultValues: {
       email: "",
@@ -94,9 +102,13 @@ const Login = () => {
               height={50}
             />
           </div>
-          <p className="mt-4 font-medium text-xl">Log in to Shadcn UI Blocks</p>
 
-          <Button className="mt-8 w-full gap-3">Continue with Google</Button>
+          <Button
+            onClick={handleGoogleSignin}
+            className="mt-8 w-full gap-3 bg-green-800 "
+          >
+            Log in with Google
+          </Button>
 
           <div className="my-7 flex w-full items-center justify-center overflow-hidden">
             <Separator />

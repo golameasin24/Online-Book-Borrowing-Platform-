@@ -11,8 +11,6 @@ export default function HomePage() {
 
       <MarqueeSection />
       <Selection />
-      <StatsSection />
-      <ReviewSection />
     </main>
   );
 }

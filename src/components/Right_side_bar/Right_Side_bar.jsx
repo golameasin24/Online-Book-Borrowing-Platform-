@@ -3,6 +3,8 @@ import Image from "next/image";
 import bookImage from "../../../public/image.jpg";
 
 import { Card, CardContent } from "../ui/card";
+import { Button } from "../ui/button";
+import BrowNow from "../shared/BrowNow";
 
 const Right_Side_bar = ({ books, category_name }) => {
   return (
@@ -29,11 +31,16 @@ const Right_Side_bar = ({ books, category_name }) => {
             </span>
           </div>
 
-          <div className="px-4 py-4">
-            <h2 className="font-semibold line-clamp-1">{books?.title}</h2>
-            <p className="mt-1 text-muted-foreground text-sm">
-              {books?.author}
-            </p>
+          <div className="px-4 py-4 space-y-3">
+            <div>
+              <h2 className="font-semibold line-clamp-1">{books?.title}</h2>
+              <p className="mt-1 text-muted-foreground text-sm">
+                Written by: {books?.author}
+              </p>
+            </div>
+            <div>
+              <BrowNow bookData={books} />
+            </div>
           </div>
         </CardContent>
       </Card>

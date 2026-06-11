@@ -26,7 +26,7 @@ const DetailsPage = async ({ params }) => {
           Book Not Found!
         </h2>
         <p className="text-muted-foreground mb-6">
-          The book you are looking for doesn't exist or has been removed.
+          The book you are looking for doesn&apos;t exist or has been removed.
         </p>
         <Button asChild variant="outline">
           <Link href="/">

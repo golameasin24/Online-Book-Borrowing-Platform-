@@ -67,13 +67,22 @@ const SignUp = () => {
     }
   };
 
-  const notifyGoogle = () =>
-    toast.info("Google Sign-In coming soon!", {
+  const notifyGoogle = async () => {
+    toast.success("Account created successfully! Redirecting...", {
       position: "top-right",
       autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
       theme: "light",
       transition: Bounce,
     });
+
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -134,7 +143,7 @@ repeating-linear-gradient(
 
           <Button onClick={notifyGoogle} className="mt-8 w-full gap-3">
             <GoogleLogo />
-            Continue with Google
+            Continue with Googles
           </Button>
 
           <div className="my-7 flex w-full items-center justify-center overflow-hidden">

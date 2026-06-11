@@ -10,12 +10,12 @@ import { format } from "date-fns";
 
 export default function Hero() {
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background">
+    <div className="relative flex items-center justify-center overflow-hidden bg-background py-30">
       {/* Subtle Background Glows for Depth */}
       <div className="absolute top-0 left-1/4 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-[128px]" />
       <div className="absolute right-1/4 bottom-0 -z-10 h-96 w-96 rounded-full bg-primary/10 blur-[128px]" />
 
-      <div className="mx-auto grid w-full max-w-(--breakpoint-xl) gap-16 px-6 py-20 lg:grid-cols-12 lg:items-center lg:py-0">
+      <div className="container mx-auto grid w-full  gap-16 px-6 py-20 lg:grid-cols-12 lg:items-center lg:py-0">
         {/* Left Column: Content */}
         <div className="flex flex-col justify-center lg:col-span-7 xl:col-span-6">
           <div>

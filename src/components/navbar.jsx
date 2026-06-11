@@ -8,10 +8,12 @@ import Link from "next/link";
 import { ThemeToggle } from "./thme-toogle-button/theme-toggole-button";
 import UserMenu from "./UserMenu/UserMenu";
 
+import Cart from "./shared/Cart";
+
 const Navbar = () => {
   return (
-    <nav className="h-16 border-b bg-background">
-      <div className="mx-auto flex h-full max-w-(--breakpoint-xl) items-center justify-between px-4 sm:px-6 lg:px-8">
+    <nav className=" h-16 border-b bg-background mt-5">
+      <div className="container mx-auto  flex  items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* <Logo /> */}
 
         <div className="flex justify-between items-center gap-2">
@@ -32,7 +34,7 @@ const Navbar = () => {
           >
             <UserMenu />
           </Button>
-          <button>Cart</button>
+          <Cart />
           <ThemeToggle />
 
           {/* Mobile Menu */}

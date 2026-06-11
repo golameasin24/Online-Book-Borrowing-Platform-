@@ -54,7 +54,7 @@ const books_news = [
 
 const MarqueeSection = () => {
   return (
-    <div className="w-full max-w-7xl mx-auto my-8 px-4">
+    <div className="container mx-auto  my-8 px-4">
       <div className="relative flex items-center overflow-hidden rounded-xl border border-green-950 bg-card/50 shadow-xs backdrop-blur-md">
         <div className="z-10 flex items-center bg-green-800 dark:bg-white dark:text-slate-800 px-4 py-3 font-semibold text-xs tracking-wider text-white uppercase select-none md:text-sm shadow-md">
           <span className="mr-2 flex h-2 w-2 rounded-full bg-white animate-pulse" />

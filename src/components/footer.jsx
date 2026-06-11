@@ -33,8 +33,8 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <footer className="border-t mt-10 min-h-screen:">
-      <div className="container mx-auto bg-green-800 text-white">
+    <footer className="border-t mt-10  bg-green-800">
+      <div className=" container mx-auto text-white">
         <div className="flex flex-col items-start justify-between gap-x-8 gap-y-10 px-6 py-12 sm:flex-row xl:px-0">
           <div>
             <div className="flex  items-center gap-2">

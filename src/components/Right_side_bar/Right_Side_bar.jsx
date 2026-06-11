@@ -1,5 +1,5 @@
 import Image from "next/image";
-// ১. এখানে বানান ঠিক করা হয়েছে (bookImage)
+
 import bookImage from "../../../public/image.jpg";
 
 import { Card, CardContent } from "../ui/card";
@@ -16,7 +16,6 @@ const Right_Side_bar = ({ books, category_name }) => {
               alt={books?.title || "Book Cover"}
               fill
               className="object-cover"
-              // ২. কন্ডিশন সহজ করা হয়েছে: image_url থাকলে ওটা নিবে, না থাকলে ইম্পোর্ট করা bookImage নিবে
               src={books?.image_url ? books.image_url : bookImage}
             />
 
